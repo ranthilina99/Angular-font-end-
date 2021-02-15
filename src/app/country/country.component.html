@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="text-center">
+    <h1 class="fst-italic" >Information On Countries</h1>
+  </div>
+    <!--Create add country details button-->
+      <div class="border">
+          <button class="btn btn-md btn-primary" (click)="open(content)">
+            <i class="fa fa-globe"></i>New Country Details</button>
+      </div>
+  
+      <!--Create the Contry table -->
+      <table class="table table-bordered table-dark">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>CountryName</th>
+          <th>Capital</th>
+          <th>Language</th>
+          <th>CallingCodes</th>
+          <th>Region</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let country of countries">
+          <td><span>{{country.id}}</span></td>
+          <td><span>{{country.countryName}}</span></td>
+          <td><span>{{country.capital}}</span></td>
+          <td><span>{{country.language}}</span></td>
+          <td><span>{{country.callingCodes}}</span></td>
+          <td><span>{{country.region}}</span></td>
+  
+          <!-- Add the Edit and Delete Buttons-->
+          <td><button class="btn btn-sm btn-success" (click)="openEdit(contentEdit, country)"            >
+                <i class="fa fa-edit"></i>Edit</button></td>
+          <td><button class="btn btn-sm btn-danger" (click)="openDelete(contentDelete, country)"            >
+                <i class="fa fa-trash"></i>Delete</button>
+            </td>
+        </tr>
+        </tbody>
+        
+      </table>
+      <div class="text-right">
+        <button class="btn btn-info" onclick="window.location.href='/home'">Back</button>
+      </div>
+    </div>
+    <!-- create the form -->
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New Country Details</h4>
+        <button type="button" class="close" aria-label="Close" class="btn btn-outline-danger" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--create the on submit function-->
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="form-group"class="was-validated">
+              <label for="countryName">Country Name</label>
+              <div class="input-group">
+                <input id="countryName" name="countryName" placeholder="Enter Country Name" class="form-control" ngModel required="">
+              </div>
+              <div class="valid-feedback">valid.</div>
+              <div class="invalid-feedback">please Enter Country Name.</div>
+          </div>
+          <div class="form-group" class="was-validated">
+              <label for="capital">Country Capital</label>
+              <div class="input-group">
+                <input id="capital" name="capital"  placeholder="Enter Country Capital" class="form-control" ngModel required="">
+              </div>
+              <div class="valid-feedback">valid.</div>
+              <div class="invalid-feedback">please Enter Country Capital.</div>
+          </div>
+          <div class="form-group" class="was-validated">
+              <label for="language">Country Language</label>
+              <div class="input-group">
+                <input id="language" name="language"  placeholder="Enter Country Language" class="form-control" ngModel required="">
+              </div>
+              <div class="valid-feedback">valid.</div>
+              <div class="invalid-feedback">please Enter Country Language.</div>
+          </div>
+          <div class="form-group"class="was-validated">
+              <label for="callingCodes">Country Calling Code</label>
+              <div class="input-group">
+                <input id="callingCodes" name="callingCodes"  placeholder="Enter Country Calling Code" class="form-control" ngModel required="">
+              </div>
+              <div class="valid-feedback">valid.</div>
+              <div class="invalid-feedback">please Enter Country Calling Code.</div>
+          </div>
+          <div class="form-group" class="was-validated">
+              <label for="region">Country Region</label>
+              <div class="input-group">
+                <input id="region" name="region" placeholder="Enter Country Region" class="form-control" ngModel required="">
+              </div>
+              <div class="valid-feedback">valid.</div>
+              <div class="invalid-feedback">please Enter Country Region.</div>
+          </div>
+          <!-- Handling Form Submit button-->
+          <div class="border text-center">
+              <input type="submit" data-dismiss="model" class="btn btn-secondary" value="Submit">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Close</button>
+      </div>
+    </ng-template>
+  
+  
+  
+  <!-- create the Edit country details form -->
+    <ng-template #contentEdit let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Country Details</h4>
+        <button type="button"  class="close" aria-label="Close" class="btn btn-outline-danger" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form  [formGroup]="editForm" novalidate >
+              <div class="form-group">
+               <label>Id</label>
+               <div class="input-group">
+                  <input formControlName="id" class="form-control" disabled>
+               </div>
+             </div>
+              <div class="form-group">
+                <label for="countryName">Country Name</label>
+                <div class="input-group">
+                  <input formControlName="countryName" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="capital">Country Capital</label>
+                <div class="input-group">
+                  <input formControlName="capital" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="language">Country Language</label>
+                <div class="input-group">
+                  <input formControlName="language" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="callingCodes">Country Calling Code</label>
+                <div class="input-group">
+                  <input formControlName="callingCodes" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="region">Country Region</label>
+                <div class="input-group">
+                  <input formControlName="region" class="form-control">
+                </div>
+              </div>
+              <!--Called open() function-->
+              <div class="border text-center"> <button data-dismiss="modal" class="btn btn-secondary" (click)="onSave()" >Save Changes</button> </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Close</button>
+      </div>
+    </ng-template>
+  
+  <!-- create the delete popup form -->
+    <ng-template #contentDelete let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm Delete</h4>
+        <button type="button" class="close" aria-label="Close" class="btn btn-outline-danger" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>Are you sure you want to delete this record.</h3>
+        <div class="border text-center"> 
+          <!--Called the onDelete Function()-->
+          <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()"> This record is delete!</button> 
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-warning" (click)="modal.close('Save click')">Cancel</button>
+      </div>
+    </ng-template>
+  
