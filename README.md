@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## How the project works
 
-First, run the project. Then, you can get information about countries by clicking on the country button in the resulting interface. It has the ability to add, delete, and update country information. The new country details button allows you to enter new data. Further data entry is validated. Then when you click the rest API button in the home interface you will be able to view the information given in localhost: 8080 / rest / v2 / countries.
+First, run the project. Then, you can get information about countries by clicking on the country button in the resulting interface. It has the ability to add, delete, and update country information. The new country details button allows you to enter new data. Further data entry is validated. Then when you click the rest API button in the home interface you will be able to view the information given in localhost: 8080 / rest / v2 / countries. It is possible to delete that record by clicking the delete button, and you can update the relevant record by clicking the edit button and by clicking the savechanges button.
